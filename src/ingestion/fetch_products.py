@@ -3,8 +3,8 @@ import requests
 import json 
 
 # URL de l'AI 
-# base + products . limits à 5 
-URL = "https://dummyjson.com/products?limit=5"
+# base + products . limits à 5 pour tester d'abord puis à 100 
+URL = "https://dummyjson.com/products?limit=100"
 
 # affichage message pour verifier si le script demarre bien 
 print("Appel en cours... ")
