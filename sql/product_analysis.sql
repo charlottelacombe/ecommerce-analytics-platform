@@ -111,3 +111,34 @@ SELECT title, brand,category,rating
 FROM `burnished-ether-490123-c8.ecommerce_analytics.products`
 ORDER BY rating DESC
 LIMIT 10;
+
+/* ------------------------------------------------------------
+Table: category_metrics
+
+Objectif :
+Créer une table analytique qui résume les données produits
+par catégorie.
+
+Métriques calculées :
+
+product_count = nombre de produits dans la catégorie
+
+avg_price =  prix moyen des produits
+
+avg_rating = note moyenne des produits
+
+total_stock = quantité totale de produits en stock
+
+inventory_value = valeur totale du stock (price * stock)
+------------------------------------------------------------ */
+
+CREATE OR REPLACE TABLE `burnished-ether-490123-c8.ecommerce_analytics.category_metrics` AS
+SELECT
+  category,
+  COUNT(*) AS product_count,
+  ROUND(AVG(price),2) AS avg_price,
+  ROUND(AVG(rating),2) AS avg_rating,
+  SUM(stock) AS total_stock,
+  ROUND(SUM(price * stock),2) AS inventory_value
+FROM `burnished-ether-490123-c8.ecommerce_analytics.products`
+GROUP BY category;
