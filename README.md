@@ -38,10 +38,10 @@ Rather than expanding too early into multiple entities, I chose to validate the 
 ## Tech Stack
 - Python (`requests`, `pandas`)
 - SQL
-- Google Cloud Platform (GCS, BigQuery)
+- Google Cloud Platform (BigQuery)
 - Power BI
-- Apache Airflow
-- Docker
+- Apache Airflow (in progress)
+- Docker (in progress)
 - Git / GitHub
 
 ---
@@ -49,11 +49,12 @@ Rather than expanding too early into multiple entities, I chose to validate the 
 ## Data Pipeline Architecture
 
 ### Data Flow
-API → Python → GCS → BigQuery → SQL → Power BI
+API → Python → BigQuery → SQL → Power BI
+-- The CSV import into BigQuery and the Power BI refresh are currently done manually.
 
 ### Orchestration & Environment
-- Airflow orchestrates the pipeline steps
-- Docker containerizes the project environment
+- Airflow wil orchestrate the pipeline steps
+- Docker will containerize the project environment
 
 ---
 
@@ -88,7 +89,7 @@ I structured the project myself into epics, sprints, backlogs, and deliverables 
 - Business Analysis page
 - KPI cards and category-based insights
 
-### Sprint 6 — Automation & Docker
+### Sprint 6 — Automation & Docker  (in progress)
 - Airflow DAG orchestration
 - Dockerized environment
 - architecture documentation
@@ -160,6 +161,7 @@ Because of that, the analysis is intentionally centered on:
 
 ## Future Improvements
 - Connect Power BI directly to BigQuery
+- Automate the pipeline with Airflow (Sprint 6 — in progress)
 - Extend the data model with additional entities
 - Add richer monitoring around orchestration
 - Expand the project toward customer-level analytics with transaction data
