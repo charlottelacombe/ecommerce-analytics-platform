@@ -1,81 +1,168 @@
 # Ecommerce Analytics Platform
 
-##  Project Overview
+## Project Overview
+This project is an end-to-end ecommerce analytics pipeline designed to transform raw product API data into actionable business insights.
 
-This project builds an end-to-end ecommerce data pipeline and dashboard to analyze product performance, inventory value, and customer behavior.
+It focuses on product-level analytics, including inventory value, pricing, discount strategy, and category performance.
 
-The goal is to transform raw API data into actionable business insights.
-
----
-
-##  Business Objective
-
-E-commerce companies need to:
-
-* monitor product performance
-* track inventory value
-* optimize pricing and discount strategies
-* understand customer satisfaction (ratings)
-
-This project provides a solution to support data-driven decisions.
+The project was built iteratively through sprints, from API ingestion to dashboarding and automation.
 
 ---
 
-##  Tech Stack
+## Business Objective
+The goal of this project is to simulate how an ecommerce company can turn raw product data into structured insights for business decision-making.
 
-* Python (requests, pandas)
-* Google Cloud Platform (GCS, BigQuery)
-* SQL (data transformation)
-* Power BI (dashboard & visualization)
-* Airflow (pipeline orchestration - optional)
-* Docker (environment setup)
+This project helps answer questions such as:
+- Which categories contain the most products?
+- Which categories generate the highest inventory value?
+- Which products represent the highest stock value?
+- How do pricing, discounts, and ratings vary across categories?
+
+---
+
+## Project Scope
+This first version of the project is intentionally focused on a single product dataset.
+
+The objective was to build a clean and complete end-to-end pipeline first:
+- data ingestion
+- data cleaning
+- cloud storage
+- SQL modeling
+- dashboarding
+- workflow automation
+
+Rather than expanding too early into multiple entities, I chose to validate the full analytics workflow on one coherent source.
+
+---
+
+## Tech Stack
+- Python (`requests`, `pandas`)
+- SQL
+- Google Cloud Platform (GCS, BigQuery)
+- Power BI
+- Apache Airflow
+- Docker
+- Git / GitHub
 
 ---
 
 ## Data Pipeline Architecture
 
-API → Python → GCS → BigQuery → SQL → Power BI → Airflow → Docker
+### Data Flow
+API → Python → GCS → BigQuery → SQL → Power BI
+
+### Orchestration & Environment
+- Airflow orchestrates the pipeline steps
+- Docker containerizes the project environment
+
+---
+
+## Sprint-Based Project Management
+I structured the project myself into epics, sprints, backlogs, and deliverables to simulate a real project workflow.
+
+### Sprint 1 — Foundations & API Ingestion
+- project setup
+- Git/GitHub setup
+- API exploration
+- raw JSON ingestion
+
+### Sprint 2 — Data Processing & Cleaning
+- JSON exploration
+- pandas transformation
+- clean CSV generation
+
+### Sprint 3 — BigQuery & Cloud Setup
+- GCP project creation
+- BigQuery dataset creation
+- cloud data loading
+- first SQL analysis
+
+### Sprint 4 — Data Modeling & KPIs
+- analytical category table
+- KPI generation in SQL
+- modeling for BI usage
+
+### Sprint 5 — BI Dashboard
+- interactive Power BI dashboard
+- Overview page
+- Business Analysis page
+- KPI cards and category-based insights
+
+### Sprint 6 — Automation & Docker
+- Airflow DAG orchestration
+- Dockerized environment
+- architecture documentation
 
 ---
 
 ## Dashboard Overview
 
-### Page 1 — Overview
+### Page 1 — E-commerce Overview
+This page provides a high-level snapshot of the catalog through:
+- Total Inventory Value
+- Average Product Rating
+- Total Number of Products
+- Total Inventory Units
+- Average Product Price
+- Product Count by Category
+- Inventory Value by Category
+- Top Products by Inventory Value
 
-* Global KPIs (Inventory Value, Avg Rating, Total Products, Total Stock, Avg Price)
-* Product distribution by category
-* Inventory value by category
-* Top products by inventory value
+**Purpose:** provide a quick overview of catalog size, value, and distribution.
 
--- Purpose: provide a quick snapshot of business performance
+### Page 2 — Business Analysis & Category Performance
+This page focuses on category-level business analysis through:
+- Average Discount by Category
+- Average Product Price by Category
+- Customer Satisfaction by Category
+- Category Performance Summary
 
----
-
-### Page 2 — Category Performance Analysis
-
-* Average discount by category
-* Customer satisfaction (ratings) by category
-* Inventory distribution insights
-* Category performance table (KPIs combined)
-
--- Purpose: deeper analysis to support business decisions
-
----
-
-##  Key Insights
-
-* A small number of products generate most of the inventory value
-* Some categories have high stock but lower customer satisfaction
-* Discount strategies vary significantly across categories
+**Purpose:** compare category performance across pricing, promotions, and satisfaction.
 
 ---
 
-##  Future Improvements
+## Key Insights
+- A small number of categories contribute disproportionately to total inventory value
+- Inventory value and product count do not always follow the same pattern
+- Discount strategy varies across categories
+- Customer satisfaction differs by category and can support prioritization decisions
 
-* Connect Power BI directly to BigQuery
-* Automate pipeline with Airflow
-* Add real-time data ingestion
-* Improve data modeling (star schema)
+---
+
+## Why This Project Matters
+This project demonstrates my ability to:
+- ingest data from an external API
+- transform raw data into analysis-ready datasets
+- work with BigQuery and SQL analytical modeling
+- build interactive BI dashboards
+- structure a project with sprint planning
+- move toward automation and reproducibility with Airflow and Docker
+
+---
+
+## Dataset Boundaries
+This project focuses on product and category analytics rather than customer behavior analytics.
+
+The source dataset does not include:
+- customer profiles
+- transaction history
+- purchase timestamps
+- demographic segmentation
+
+Because of that, the analysis is intentionally centered on:
+- catalog structure
+- inventory value
+- pricing
+- discounting
+- customer ratings
+
+---
+
+## Future Improvements
+- Connect Power BI directly to BigQuery
+- Extend the data model with additional entities
+- Add richer monitoring around orchestration
+- Expand the project toward customer-level analytics with transaction data
 
 ---
 
@@ -85,4 +172,20 @@ API → Python → GCS → BigQuery → SQL → Power BI → Airflow → Docker
 
 
 <img width="1277" height="790" alt="Capture d’écran 2026-03-27 à 01 49 30" src="https://github.com/user-attachments/assets/6813c35e-075d-4948-8a68-5c9f7f8df4ff" />
+
+
+## Repository Structure
+
+ecommerce-analytics-platform/
+├── data/
+│   ├── raw/
+│   └── processed/
+├── sql/
+├── src/
+│   ├── ingestion/
+│   └── processing/
+├── airflow/
+├── Dockerfile
+├── requirements.txt
+└── README.md
 
