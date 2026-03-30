@@ -175,7 +175,7 @@ Because of that, the analysis is intentionally centered on:
 
 
 ## Repository Structure
-
+```text
 ecommerce-analytics-platform/
 ├── data/
 │   ├── raw/
