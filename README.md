@@ -175,17 +175,6 @@ Because of that, the analysis is intentionally centered on:
 
 
 ## Repository Structure
-```text
-ecommerce-analytics-platform/
-├── data/
-│   ├── raw/
-│   └── processed/
-├── sql/
-├── src/
-│   ├── ingestion/
-│   └── processing/
-├── airflow/
-├── Dockerfile
-├── requirements.txt
-└── README.md
+
+<img width="265" height="526" alt="Capture d’écran 2026-03-30 à 16 56 37" src="https://github.com/user-attachments/assets/64ac2b85-22b5-4d43-a691-7539a62045ab" />
 
