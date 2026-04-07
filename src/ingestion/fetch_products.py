@@ -2,36 +2,48 @@
 import requests
 import json 
 
-# URL de l'AI 
+# URL de l'API 
 # base + products . limits à 5 pour tester d'abord puis à 100 
 URL = "https://dummyjson.com/products?limit=100"
 
-# affichage message pour verifier si le script demarre bien 
-print("Appel en cours... ")
 
-# envoi requete GET à l'api 
-response = requests.get(URL)
+# fonction principale qui contient tout le script
+# on met le code ici pour pouvoir le lancer quand on veut (ex: avec Airflow)
+def run():
 
-# verification si connexion bien etablie 
-# on trabnsforme la reponse de l'api en JSON exploitable 
-if response.status_code == 200:
-    data = response.json()
+    # affichage message pour verifier si le script demarre bien 
+    print("Appel en cours... ")
 
-    # verif combien de produit on etait recuperes 
-    print('produits recuperes : ', len(data['products']))
+    # envoi requete GET à l'api 
+    response = requests.get(URL)
 
-    #ouverture du fichier en mode ecriture as f pour fichier 
-    with open("data/raw/products_raw.json", "w") as f :
-        # dump --> ecrit les donnees json dans le fichier 
-        # indentation à 4 pour rendre plus lisible 
-        json.dump(data,f,indent=4)
+    # verification si connexion bien etablie 
+    # on transforme la reponse de l'api en JSON exploitable 
+    if response.status_code == 200:
+        data = response.json()
+
+        # verif combien de produit on etait recuperes 
+        print('produits recuperes : ', len(data['products']))
+
+        # ouverture du fichier en mode ecriture as f pour fichier 
+        with open("data/raw/products_raw.json", "w") as f :
+            # dump --> ecrit les donnees json dans le fichier 
+            # indentation à 4 pour rendre plus lisible 
+            json.dump(data,f,indent=4)
+
+        # message de confirmation 
+        print("Fichier JSON sauvegardé dans data/raw/products_raw.json")
+
+    else:
+        # si pas de reponse 200 
+        print('erreur api :', response.status_code)
 
 
-    # message de confirmation 
-    print("Fichier JSON sauvegardé dans data/raw/products_raw.json")
+# ce bloc sert à dire :
+# "si je lance ce fichier directement (python fetch_products.py)"
+# alors execute la fonction run()
+# sinon (ex: si Airflow importe le script), ne lance rien automatiquement
+if __name__ == "__main__":
+    run()
 
-else:
-    # si pas de rponse 200 
-    print('erreur api :', response.status_code)
-
-    
+print(__name__)
