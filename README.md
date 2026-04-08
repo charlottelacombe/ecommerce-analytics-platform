@@ -93,7 +93,9 @@ I structured the project myself into epics, sprints, backlogs, and deliverables 
 - Airflow DAG orchestration
 - Dockerized environment
 - architecture documentation
+<img width="1780" height="397" alt="Capture d’écran 2026-04-08 à 01 56 32" src="https://github.com/user-attachments/assets/4a6826a3-70e6-49e9-b24b-bd2e94522713" />
 
+<img width="1780" height="804" alt="Capture d’écran 2026-04-08 à 01 54 37" src="https://github.com/user-attachments/assets/9b91c6a4-0981-405d-9774-f83ba1b4d228" />
 ---
 
 ## Dashboard Overview
